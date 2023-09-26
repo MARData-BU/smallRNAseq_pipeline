@@ -1,0 +1,26 @@
+merge: TRUE
+quality: TRUE
+01_umi_length_and_extract: TRUE
+02_cutadapt: TRUE
+03_alignment: TRUE
+04_quantification: TRUE
+
+project_directory: /bicoh/MARGenomics/20230626_MFito_smallRNAseq
+project_analysis: /bicoh/MARGenomics/20230626_MFito_smallRNAseq/Analysis
+functions: /bicoh/MARGenomics/Pipelines/smallRNASeq
+fastq_directory: /bicoh/MARGenomics/20230626_MFito_smallRNAseq/rawData
+batch_num: 1
+batch_folder: FITOMON_01
+UMIs: TRUE
+fastq_suffix: .fastq.gz
+
+sample_sheet: /bicoh/MARGenomics/Pipelines/smallRNASeq/sample_sheet.xlsx
+paired_end: FALSE
+total_output_files: X
+
+adapter: AACTGTAGGCACCATCAAT
+genome_index: /bicoh/MARGenomics/AnalysisFiles/Index_Genomes_STAR/miRBase/miRBase_v22.1_hsa_hairpin_cDNA
+reference_genome: /bicoh/MARGenomics/Ref_Genomes_fa/miRBase/miRBase_v22.1_hsa_hairpin_cDNA.fa
+annotation_genome: /bicoh/MARGenomics/AnalysisFiles/Annot_files_GTF/Human_miRNAs/miRNA.str.v22.1_27092022_over_hairpin.hsa.gtf
+fastqscreen_config: /bicoh/MARGenomics/AnalysisFiles/Index_Genomes_Bowtie2/fastq_screen.conf
+
