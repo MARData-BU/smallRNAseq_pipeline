@@ -71,11 +71,11 @@ Also please consider the following points when populating the config_input_files
       (e.g: if -batch_num- is set to 3 and -batch_folder- to 'BATCH_0', the batch folders through which the pipeline will iterate will be 'BATCH_01', 'BATCH_02' and 'BATCH_03').
    -If you only require to run some parts of the pipeline, please consider the following:
       - This pipeline assumes that there will be 5 folders within your -project_analysis- directory:
-        00_Length
-        01_ExtractUMI
-        02_Cutadapt
-        03_Alignment
-        04_Quantification
+        - 00_Length
+        - 01_ExtractUMI
+        - 02_Cutadapt
+        - 03_Alignment
+        - 04_Quantification
       - Please note that if '01_umi_length_and_extract' is set to FALSE, the folders '00_Length' and '01_ExtractUMI' will not be generated and are not expected to exist. If this smallRNAseq analysis contains UMIs
       (UMIs set to TRUE) but '01_umi_length_and_extract' is set to FALSE (smallRNAseq contains UMIs, but UMI length and UMI extact are not to be run), the pipeline will expect the path $WD/02_Cutadapt/Trimmed_Files
       to contain .fastq.gz files in it.
