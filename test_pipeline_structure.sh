@@ -149,9 +149,9 @@ If MERGE is set to TRUE (if fastq files have to be merged), please note that the
   -The 'total_output_files' variable in the 'config_input_files.txt' must correspond to the total number of files that are to be generated (total number of rows).
   -The Excel file 'sample_sheet.xlsx' must be populated with
       >(1) the paths and names of the fastq.gz files and
-      >(2) the paths and names in which merged files will be stored. If there are >1 batches and merged files are to be stored in different folders, please consider so when populating the path.
-      Also please consider this when populating the variables -batch_num- and -batch_folder- from the 'config_input_files.txt'; if merged data is stored in different folderes according to the batch,
-      variables -batch_num- and -batch_folder- must be filled accordingly. The number of batches must correspond to the number of batch folders that are generated AFTER the merge.
+      >(2) the paths and names in which merged files will be stored. If there are >1 batches to be merged, note that ALL merged samples must be stored within the same folder, which will correspond to
+      the FASTQDIR variable. Please consider so when populating the path. Also please consider this when populating the variables -batch_num- and -batch_folder- from the 'config_input_files.txt', which
+      will need to be 1 and NA respectively.
       >It is possible to leave empty cells within a row, and also to add new columns, but note that the output path/name must ALWAYS be the last populated column of the spreadsheet, that it
       must be the same column for all rows even though empty spaces are left in some (but not all) rows, and that it must be named 'Output_name'.
       >Column names can be modified with the exception of 'Output_name' column (which MUST be the last column). Please, do NOT modify the name of this column or else the pipeline will not run.
@@ -159,44 +159,19 @@ If MERGE is set to TRUE (if fastq files have to be merged), please note that the
       are stored separately, the pipeline will analyze all of them.
   -If you require to MERGE files and your data has >1 BATCHES, please note that ALL MERGED FILES MUST BE STORED IN THE SAME OUTPUT DIRECTORY."
 
-#################################
-# Define batch folders (if any) #
-#################################
 
-# If batch number is greater than 1, define the batch folders by merging the batch prefix with the number of batches
-
-echo -e "\n\nThe batch/es is/are the following: \n"
-
-if [ "$BATCH" -gt 1 ]; then
-  folders=()  # Initialize an empty array
-  for ((n=1; n<=$BATCH; n++)); do
-    folder="${BATCH_FOLDER}${n}" # define "folder" as a variable that concatenates the batch prefix (BATCH_FOLDER) + the array number (e.g: BATCH_01)
-    folders+=("$folder")  # Append the folder to the array
-  done
-
-  echo -e "- The batch prefix is: $BATCH_FOLDER, and the batch folders are:\n"
-
-  # Access the folders using "${folders[@]}"
-  for folder in "${folders[@]}"; do
-    echo -e "  - $folder\n" # print the batch folders
-    # Use the folder variable as needed
-  done
-elif [ "$BATCH" -eq 1 ]; then
-  if [ -z "$BATCH_FOLDER" ]; then
-    folders=("/")
-    echo -e "No batch folder names have been defined.\n"
-  else
-    folders=("$BATCH_FOLDER")
-    echo -e "-$folders.\n"
-  fi
-else
-  echo "Invalid BATCH value: $BATCH"
-fi
-
-echo -e "\n\n The steps to perform in this analysis are the following: \n"
+echo -e "
+######################################################
+#############                            #############
+#############       SET PARAMETERS       #############
+#############                            #############
+######################################################
+"
+echo -e "Please read the below text to ensure that the parameters inputed to the config_input_files.txt are correct. \n"
+echo -e "According to the set up, the steps to perform are:\n"
 
 if [ "$MERGE" == TRUE ]; then
-  echo "- Merge."
+  echo "- Merge fastq files."
 fi
 
 if [ "$QC" == TRUE ]; then
@@ -212,7 +187,7 @@ if [ "$CUTADAPT" == TRUE ]; then
 fi
 
 if [ "$ALIGNMENT" == TRUE ]; then
-  echo "- Alignment."
+  echo "- Alignment (STAR) and summary metrics (picard)."
 fi
 
 if [ "$QUANTIFICATION" == TRUE ]; then
@@ -222,24 +197,25 @@ fi
 echo -e "\nThe parameters defined for the pipeline are the following:\n"
 
 if [ "$MERGE" == TRUE ]; then
-  echo "> The sample sheet is $SAMPLE_SHEET (only used if MERGE has been defined as TRUE)."
-  echo "> The total output files to be generated with the merge are: $TOTAL_OUT."
+  echo "- The sample sheet is $SAMPLE_SHEET (only used if MERGE has been defined as TRUE)."
+  echo "- The total output files to be generated with the merge are: $TOTAL_OUT."
 
   if [ "$PAIRED" == TRUE ]; then
     END=PAIRED
-    echo "> RNA end has been defined as $END END."
+    echo "- RNA end has been defined as $END END."
   else
     END=SINGLE
-    echo "> RNA end has been defined as $END END."
+    echo "- RNA end has been defined as $END END."
   fi
 fi
 
-echo -e "The project directory is $PROJECT."
-echo "The analysis directory is $WD."
-echo "The functions directory is $FUNCTIONSDIR."
-echo "The fastq directory is $FASTQDIR."
-echo "There is/are $BATCH batch/es."
-echo -e "The batch folders are:"
+echo "- The project directory is $PROJECT."
+echo "- The analysis directory is $WD."
+echo "- The functions directory is $FUNCTIONSDIR."
+echo "- The fastq directory is $FASTQDIR."
+echo "- The fastq suffix is $FASTQ_SUFFIX"
+echo "- There is/are $BATCH batch/es."
+echo "- The batch folders are:"
 
 if [ "$BATCH" -gt 1 ]; then
   folders=()  # Initialize an empty array
@@ -265,24 +241,31 @@ if [ "$UMI" == TRUE ]; then
   echo "> The smallRNAseq contains UMIs."
 fi
 
-echo -e "> The adapter is $ADAPTER."
-echo "> The genome index used is $GNMIDX."
-echo "> The reference genome is $REFGENE."
-echo "> The annotation genome is $ANNOTGENE."
-echo "> The fastq config file is $FASTQSCREEN_CONFIG."
+echo "- The adapter is $ADAPTER."
+echo "- The genome index used is $GNMIDX."
+echo "- The reference genome is $REFGENE."
+echo "- The annotation genome is $ANNOTGENE."
+echo "- The fastq config file is $FASTQSCREEN_CONFIG."
 
 
-##################################################
-#                   ANALYSIS                     #
-##################################################
+######################################################
+#############                            #############
+#############        MERGE FILES         #############
+#############                            #############
+######################################################
 
 if [ "$MERGE" == TRUE ]
   then
     echo -e "
-    =============
-    Merging files
-    ============="
-    echo -e "\n Creating the script to concatenate the FASTQ files...\n "
+    ######################################################
+    #############                            #############
+    #############        MERGE FILES         #############
+    #############                            #############
+    ######################################################
+    "
+    echo -e "\n\nCreating the fastq directory where the merged files will be stored..."
+    mkdir -p $FASTQDIR
+    echo -e "\n\nCreating the script to concatenate the FASTQ files...\n\n"
 
     sbatch $FUNCTIONSDIR/Merge/create_merge_file.sh $FUNCTIONSDIR $SAMPLE_SHEET $WD
 
@@ -299,56 +282,98 @@ if [ "$MERGE" == TRUE ]
 
     echo -e "\n Compressing FASTQ files...\n"
 
-    count=$(ls -l "$FASTQDIR/${folder}"/*.fastq | wc -l) # if MERGE==TRUE there is only one $folder variable as all files must be in the same directory.
-    while [ "$count" != "$TOTAL_OUT" ] # check whether ALL the files corresponding to every sample are created or not
-      do
-        sleep 10 # wait if not
-        echo "Sleeping 10 seconds..."
-        count=`ls -l $FASTQDIR/${folder}/*.fastq | wc -l` # check again
-        echo "The total number of fastq is $count, and there should be $TOTAL_OUT files."
-    done
-    echo "The total number of fastq files is $count and it corresponds to the total number of fastq expected $TOTAL_OUT."
-    gzip $FASTQDIR/${folder}/*.fastq
-    echo -e "\n FastQ Files for batch $folder compressed. \n"
-fi
+    if ls $FASTQDIR/*.fastq >/dev/null 2>&1 # check whether there is any .fastq file
+        then
+            count=`ls -l $FASTQDIR/*.fastq | wc -l`
+            echo $(ls -l $FASTQDIR)
+            while [ $count != $TOTAL_OUT ] # check whether ALL the files corresponding to every sample are created or not
+            do
+              sleep 100 # wait if not
+              count=`ls -l $FASTQDIR/*.fastq | wc -l` # check again
+              echo "The number of fastq files is $count"
+              echo $(ls -l $FASTQDIR)
+          done
+        else
+            sleep 300 # if there is no fastq file, sleep for 300 seconds so some fastq file will be generated
+            count=`ls -l $FASTQDIR/*.fastq | wc -l`
+            echo $(ls -l $FASTQDIR)
+            while [ $count != $TOTAL_OUT ] # check whether ALL the files corresponding to every sample are created or not
+            do
+              sleep 100 # wait if not
+              count=`ls -l $FASTQDIR/*.fastq | wc -l` # check again
+              echo "The number of fastq files is $count and it should be $TOTAL_OUT"
+              echo $(ls -l $FASTQDIR)
+          done
+        fi
+    
+    echo "All done, there are a total of $count fastq files and it should be $TOTAL_OUT"
 
-if [ $MERGE == TRUE ] # If merge is true, do not start QC unless all fastq.gz files have been generated. Note that if MERGE==TRUE all merged files must be in the same outputdir, so there is only 1 $folder variable.
-  then
-  count=$(ls -l "$FASTQDIR/${folder}"/*.fastq.gz | wc -l)
-  while [ "$count" != "$TOTAL_OUT" ] # check whether ALL fastq.gz files corresponding to every sample are created or not
+    sleep 300
+
+    gzip $FASTQDIR/*.fastq
+
+    count=`ls -l $FASTQDIR/*.fastq.gz | wc -l` # check again
+    echo "The number of fastq.gz files is $count."
+
+    while [ $count != $TOTAL_OUT ] # check whether ALL the files have been compressed
     do
-      sleep 10 # wait if not
-      echo "Sleeping 10 seconds..."
-      count=`ls -l $FASTQDIR/${folder}/*.fastq.gz | wc -l` # check again
-      echo "The total number of fastq is $count, and there should be $TOTAL_OUT files."
+        gzip $FASTQDIR/*.fastq
+        count=`ls -l $FASTQDIR/*.fastq.gz | wc -l` # check again
+          echo "The number of fastq files is $count and it should be $TOTAL_OUT"
     done
-  echo "The total number of fastq.gz files is $count and it corresponds to the total number of fastq.gz files expected $TOTAL_OUT."
+
+
+    echo -e "\n\nFastQ Files compressed\n\n"
 fi
 
-for folder in "${folders[@]}"; do
+######################################################
+#############                            #############
+#############             QC             #############
+#############                            #############
+######################################################
 
-  if [ "$BATCH" -gt 1 ]; then
-    echo "Computing batch $folder"
-  fi
+echo -e "
+######################################################
+#############                            #############
+#############             QC             #############
+#############                            #############
+######################################################
+"
 
-  if [ "$QC" == "TRUE" ]; then
-    echo -e "
-    ======================
-    Performing QC analysis
-    ======================"
-    mkdir -p "$PROJECT/QC"
-    mkdir -p "$PROJECT/QC/logs"
-    cd "$PROJECT/QC" || exit 1
-    echo "Path moved to $PROJECT/QC."
+if [ $QC == TRUE ]
+  then
+    for folder in "${folders[@]}"; do
+    echo -e "\n\nPerforming QC analysis for batch $folder.\n\n"
+
+    mkdir -p "$FUNCTIONSDIR/QC/logs"
+    cd "$FUNCTIONSDIR/QC" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/QC."
     # FASTQC and  FASTQSCREEN
     echo -e "\n\nLaunching QC loop...\n\n"
-    sbatch "$FUNCTIONSDIR/QC/QC_loop_and_metrics.sh" "$PROJECT" "$FASTQDIR" "$FUNCTIONSDIR" "$folder" "$FASTQSCREEN_CONFIG" "$FASTQ_SUFFIX"
+    sbatch $FUNCTIONSDIR/QC/QC_loop_and_metrics.sh $PROJECT $FASTQDIR $FUNCTIONSDIR $folder $FASTQSCREEN_CONFIG $FASTQ_SUFFIX 
     echo -e "\n\nQC job sent to the cluster.\n\n"
+  done
+
   else
     echo -e "\n\nQC will not be performed.\n\n"
-  fi
+fi
 
-  if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
+######################################################
+#############                            #############
+#############  UMI LENGTH AND EXTRACT    #############
+#############                            #############
+######################################################
+
+echo -e "
+######################################################
+#############                            #############
+#############  UMI LENGTH AND EXTRACT    #############
+#############                            #############
+######################################################
+"
+
+if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
+  for folder in "${folders[@]}"; do
     #==============================#
     # 00) UMI LENGTH               #
     #==============================#
@@ -356,9 +381,9 @@ for folder in "${folders[@]}"; do
     ====================
     Computing UMI length
     ===================="
-    mkdir -p "$WD/00_Length/logs"
-    cd "$WD/00_Length" || exit 1
-    echo "Path moved to $WD/00_Length."
+    mkdir -p "$FUNCTIONSDIR/00_Length/logs"
+    cd "$FUNCTIONSDIR/00_Length" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/00_Length."
 
     SEQUENCE_SH=$(sbatch --parsable "$FUNCTIONSDIR/00_Length/sequence.sh" "$WD" "$FASTQDIR" "$folder" "$ADAPTER" "$FASTQ_SUFFIX")
     echo "sequence.sh script sent to the cluster with job ID $SEQUENCE_SH."
@@ -373,10 +398,10 @@ for folder in "${folders[@]}"; do
     ===============
     Extracting UMIs
     ==============="
-    mkdir -p "$WD/01_ExtractUMI/logs"
+    mkdir -p "$FUNCTIONSDIR/01_ExtractUMI/logs"
     mkdir -p "$WD/01_ExtractUMI/Fastq_Files/${folder}"
-    cd "$WD/01_ExtractUMI" || exit 1
-    echo "Path moved to $WD/01_ExtractUMI."
+    cd "$FUNCTIONSDIR/01_ExtractUMI" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/01_ExtractUMI."
 
     length_files=$(ls -lR "$FASTQDIR/${folder}"/*$FASTQ_SUFFIX | wc -l) #get the number of files with fastq.gz extension
     echo "A total of $length_files fastq.gz files have been found and will be analyzed."
@@ -386,23 +411,28 @@ for folder in "${folders[@]}"; do
 
     GZIP_SH=$(sbatch --dependency=afterok:${EXTRACT_SH} --parsable "$FUNCTIONSDIR/01_UMI_extract/gzip.sh" "$folder" "$WD")
     echo "gzip.sh script sent to the cluster with job ID $GZIP_SH."
+  done
   else
     echo -e "\n UMI length and UMI extract will not be run. \n"
   fi
 
-  if [ "$CUTADAPT" == "TRUE" ]; then
-    #==============================#
-    # 02) CUTADAPT                 #
-    #==============================#
+######################################################
+#############                            #############
+#############         CUTADAPT           #############
+#############                            #############
+######################################################
+
+if [ "$CUTADAPT" == "TRUE" ]; then
+  for folder in "${folders[@]}"; do
     echo -e "
     ================
     Running cutadapt
     ================"
 
-    mkdir -p "$WD/02_Cutadapt/logs"
+    mkdir -p "$FUNCTIONSDIR/02_Cutadapt/logs"
     mkdir -p "$WD/02_Cutadapt/Trimmed_Files/${folder}"
-    cd "$WD/02_Cutadapt" || exit 1
-    echo "Path moved to $WD/02_Cutadapt."
+    cd "$FUNCTIONSDIR/02_Cutadapt" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/02_Cutadapt."
 
     if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
       # Check if the job $GZIP_SH is still running
@@ -432,14 +462,30 @@ for folder in "${folders[@]}"; do
         sleep 60
     done
 
-    STATS_SH=$(sbatch --parsable "$FUNCTIONSDIR/02_Cutadapt/Stats.sh" "$WD" "$folder" "$PROJECT)
+    STATS_SH=$(sbatch --parsable "$FUNCTIONSDIR/02_Cutadapt/Stats.sh" "$WD" "$folder" "$PROJECT")
     echo "Stats.sh script sent to the cluster with job ID $STATS_SH."
-
-    else
+    
+  done
+  else
     echo -e "\n Cutadapt will not be run.\n"
   fi
 
-  if [ "$ALIGNMENT" == "TRUE" ]; then
+######################################################
+#############                            #############
+#############         ALIGNMENT          #############
+#############                            #############
+######################################################
+
+echo -e "
+######################################################
+#############                            #############
+#############         ALIGNMENT          #############
+#############                            #############
+######################################################
+"
+if [ "$ALIGNMENT" == "TRUE" ]; then
+    for folder in "${folders[@]}"; do
+
     #==================================#
     # 03) ALIGNMENT                    #
     #==================================#
@@ -448,11 +494,11 @@ for folder in "${folders[@]}"; do
     Running alignment
     ================="
 
-    mkdir -p "$WD/03_Alignment/logs"
+    mkdir -p "$FUNCTIONSDIR/03_Alignment/logs"
     mkdir -p "$WD/03_Alignment/BAM_Files/${folder}"
     mkdir -p "$WD/03_Alignment/Stats/${folder}"
-    cd "$WD/03_Alignment" || exit 1
-    echo "Path moved to $WD/03_Alignment."
+    cd "$FUNCTIONSDIR/03_Alignment" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/03_Alignment."
 
     INDIR="$WD/02_Cutadapt/Trimmed_Files/${folder}"
     OUTDIR="$WD/03_Alignment/BAM_Files/${folder}"
@@ -488,12 +534,27 @@ for folder in "${folders[@]}"; do
     STATS_SH2=$(sbatch --parsable "$FUNCTIONSDIR/03_Alignment/Stats.sh" "$WD" "$folder" "$PROJECT")
 
     echo "Stats.sh script sent to the cluster with job ID $STATS_SH2."
-
+  done
   else
     echo -e "\n Alignment will not be run. \n"
-  fi
+fi
 
-  if [ "$QUANTIFICATION" == "TRUE" ]; then
+######################################################
+#############                            #############
+#############       QUANTIFICATION       #############
+#############                            #############
+######################################################
+
+echo -e "
+######################################################
+#############                            #############
+#############       QUANTIFICATION       #############
+#############                            #############
+######################################################
+"
+
+if [ "$QUANTIFICATION" == "TRUE" ]; then
+    for folder in "${folders[@]}"; do
     #==================================#
     # 04) Quantification               #
     #==================================#
@@ -502,11 +563,11 @@ for folder in "${folders[@]}"; do
     Running quantification
     ======================"
 
-    mkdir -p "$WD/04_Quantification/logs"
+    mkdir -p "$FUNCTIONSDIR/04_Quantification/logs"
     mkdir -p "$WD/04_Quantification/CountFiles/${folder}"
 
-    cd "$WD/04_Quantification" || exit 1
-    echo "Path moved to $WD/04_Quantification."
+    cd "$FUNCTIONSDIR/04_Quantification" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/04_Quantification."
 
     BAMDIR="$WD/03_Alignment/BAM_Files/${folder}"
     OUTDIR="$WD/04_Quantification/CountFiles/${folder}"
@@ -514,18 +575,16 @@ for folder in "${folders[@]}"; do
     INDIR="$WD/03_Alignment/BAM_Files/${folder}"
 
     if [ "$ALIGNMENT" == "TRUE" ]; then
-       
-       while [[ $(squeue -j "$STATS_SH2" -h | wc -l) -ne 0 ]]; do # while there is still the STATS_SH2 job in the squeue, sleep for 60 seconds
-          echo "The job STATS_SH2 $STATS_SH2 is still pending or has dependencies. Sleeping for 60 seconds..."
-          sleep 60
-        done
-
-      length_files=$(ls -1R "$INDIR"/*.bam | wc -l) # get the number of files with .bam extension
-    else
-      length_files=$(ls -1R "$INDIR"/*.bam | wc -l) # get the number of files with .bam extension
-    fi
-
-    if [ "$ALIGNMENT" == "TRUE" ]; then
+    
+      while [[ $(squeue -j "$STATS_SH2" -h | wc -l) -ne 0 ]]; do # while there is still the STATS_SH2 job in the squeue, sleep for 60 seconds
+            echo "The job STATS_SH2 $STATS_SH2 is still pending or has dependencies. Sleeping for 60 seconds..."
+            sleep 60
+          done
+  
+        length_files=$(ls -1R "$INDIR"/*.bam | wc -l) # get the number of files with .bam extension
+      else
+        length_files=$(ls -1R "$INDIR"/*.bam | wc -l) # get the number of files with .bam extension
+        
       if [ "$UMI" == "TRUE" ]; then
         QUANT=$(sbatch --dependency=afterok:${STAR_LOOP} --parsable --array=1-$length_files "$FUNCTIONSDIR/04_Quantification/quantification.sh" "$WD" "$folder" "$REFGENE" "$ANNOTGENE" "$PROJECT" "$UMI")
         echo "Quantification script sent to the cluster."
@@ -562,5 +621,6 @@ for folder in "${folders[@]}"; do
 
       fi
     fi
-  fi
-done
+  done
+fi
+
