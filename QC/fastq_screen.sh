@@ -31,6 +31,7 @@ echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX. \n"
 
 mkdir $PROJECT/QC/${folder}/FastqScreen
 OUTDIR=$PROJECT/QC/${folder}/FastqScreen
+echo -e"The output directory is $OUTDIR.\n"
 
 #--------------------
 # Prapare input files
@@ -38,6 +39,7 @@ OUTDIR=$PROJECT/QC/${folder}/FastqScreen
 FASTQFILES=($(ls -1 $FASTQDIR/${folder}/*$FASTQ_SUFFIX))
 i=$(($SLURM_ARRAY_TASK_ID - 1)) ## bash arrays are 0-based
 INFILE=${FASTQFILES[i]}
+echo -e "Processing file $INFILE.\n"
 
 ##############################################
 #############  FASTQ SCREEN ##################
