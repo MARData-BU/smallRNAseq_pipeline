@@ -21,6 +21,7 @@ echo -e "Batch has been defined as $folder.\n"
 echo -e "Fastq directory has been defined as $FASTQDIR. \n"
 echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX. \n"
 
+mkdir -p $PROJECT/QC/${folder}/FastQC
 OUTDIR=$PROJECT/QC/${folder}/FastQC
 
 #--------------------
@@ -29,6 +30,7 @@ OUTDIR=$PROJECT/QC/${folder}/FastQC
 FASTQFILES=($(ls -1 $FASTQDIR/${folder}/*$FASTQ_SUFFIX))
 i=$(($SLURM_ARRAY_TASK_ID - 1))
 INFILE=${FASTQFILES[i]}
+echo -e "Analyzing sample $INFILE.\n"
 
 ##############################################
 #############  FASTQC ########################
