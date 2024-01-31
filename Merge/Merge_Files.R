@@ -14,9 +14,9 @@ list.paste[[1]] <- "#!/bin/bash"
 list.paste[[2]] <- "#SBATCH -p long,short,normal"
 list.paste[[3]] <- "#SBATCH --cpus-per-task=6"
 list.paste[[4]] <- "#SBATCH --mem-per-cpu 8Gb"
-list.paste[[5]] <- "#SBATCH -J create_merge_file"
-list.paste[[6]] <- "#SBATCH -o logs/runR.%J.out"
-list.paste[[7]] <- "#SBATCH -e logs/runR.%J.err"
+list.paste[[5]] <- "#SBATCH -J merge_to_run"
+list.paste[[6]] <- "#SBATCH -o logs/merge_to_run.%J.out"
+list.paste[[7]] <- "#SBATCH -e logs/merge_to_run.%J.err"
 
 for (i in 1:nrow(zcat)) {
   true_cases <- length(which(apply(zcat[i, 1:ncol(zcat)], 2, complete.cases) == T))
