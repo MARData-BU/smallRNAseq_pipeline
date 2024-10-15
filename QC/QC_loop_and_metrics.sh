@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p lowmem,short            # Partition to submit to
+#SBATCH -p short            # Partition to submit to
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu 12Gb     # Memory in MB
 #SBATCH -J QC_loop           # job name
