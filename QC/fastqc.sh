@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p lowmem,short            # Partition to submit to
+#SBATCH -p short            # Partition to submit to
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu 6Gb     # Memory in MB
 #SBATCH -J FastQC           # job name
