@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p lowmem,normal         # Partition to submit to
+#SBATCH -p short,normal         # Partition to submit to
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu 7Gb     # Memory in MB
 #SBATCH -J smallRNASeq           # job name
