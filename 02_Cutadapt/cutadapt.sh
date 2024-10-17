@@ -13,13 +13,30 @@ module load Python/3.8.6-GCCcore-10.2.0
 # Prapare folders
 
 OUTDIR=$1
-THISFASTQFILE=$2
-UMI=$3
-ADAPTER=$4
+UMI=$2
+ADAPTER=$3
+FASTQDIR=$4
+FASTQ_SUFFIX=$5
+folder=$6
+
+echo -e "Output directory has been defined as $OUTDIR.\n" 
+echo -e "UMI has been defined as $UMI.\n" 
+echo -e "Adapter has been defined as $ADAPTER.\n" 
+echo -e "Fastq directory has been defined as $FASTQDIR.\n" 
+echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX.\n" 
+
+FASTQFILES=($(ls -1 $FASTQDIR/${folder}/*$FASTQ_SUFFIX))
+i=$(($SLURM_ARRAY_TASK_ID - 1)) ## bash arrays are 0-based
+echo -e "Array index is $i.\n" 
+
+THISFASTQFILE=${FASTQFILES[i]}
+
+echo "$THISFASTQFILE is being analyzed."
+
 #--------------------
 # Prapare input files
 name=`basename $THISFASTQFILE`
-echo "$name is being analyzed."
+echo "The basename for the file is $name."
 
 #--------------------
 # Run cutadapt & and qc
