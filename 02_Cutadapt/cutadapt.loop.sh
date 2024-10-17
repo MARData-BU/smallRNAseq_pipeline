@@ -28,29 +28,22 @@ echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX.\n"
 OUTDIR=$WD/02_Cutadapt/Trimmed_Files/${folder} # define output directory
 
 cd $WD/02_Cutadapt
+mkdir logs
 
 #=========================#
 #   Cutadapt              #
 #=========================#
 if [ $UMI == TRUE ]
   then
-    FASTQFILES=($(ls -1 $WD/01_ExtractUMI/Fastq_Files/${folder}/*$FASTQ_SUFFIX))
-    i=$(($SLURM_ARRAY_TASK_ID - 1))
-    echo "The index used is $i."
-    THISFASTQFILE=${FASTQFILES[i]}
-    echo "$THISFASTQFILE is being analyzed."
-    CUTADAPT=$(sbatch --parsable $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $THISFASTQFILE $UMI)
-    echo "cutadapt.sh script run and sent to the cluster with job ID $CUTADAPT."
+    length_files=$(ls -lR "$WD/01_ExtractUMI/Fastq_Files/${folder}"/*$FASTQ_SUFFIX | wc -l) # Get the number of files with fastq.gz/.fq.gz extension
+    CUTADAPT=$(sbatch --parsable --array=1-$length_files $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $UMI $ADAPTER $FASTQDIR $FASTQ_SUFFIX $folder)
+    echo "cutadapt.sh jobs run and sent to the cluster with job ID $CUTADAPT."
 
     #sbatch $FUNCTIONSDIR/02_Cutadapt/gzip.sh $OUTDIR
   else
-    FASTQFILES=($(ls -1 $FASTQDIR/${folder}/*$FASTQ_SUFFIX))
-    i=$(($SLURM_ARRAY_TASK_ID - 1))
-    THISFASTQFILE=${FASTQFILES[i]}
-    echo "$THISFASTQFILE is being analyzed."
-    CUTADAPT=$(sbatch --parsable $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $THISFASTQFILE $UMI $ADAPTER)
-
-    echo "cutadapt.sh script run and sent to the cluster with job ID $CUTADAPT."
+    length_files=$(ls -lR "$FASTQDIR/${folder}"/*$FASTQ_SUFFIX | wc -l) # Get the number of files with fastq.gz/.fq.gz extension
+    CUTADAPT=$(sbatch --parsable --array=1-$length_files $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $UMI $ADAPTER $FASTQDIR $FASTQ_SUFFIX $folder)
+    echo "cutadapt.sh jobs run and sent to the cluster with job ID $CUTADAPT."
 
     #sbatch dependency=afterok:${CUTADAPT}  $FUNCTIONSDIR/02_Cutadapt/gzip.sh $OUTDIR
 
