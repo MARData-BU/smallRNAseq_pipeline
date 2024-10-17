@@ -402,10 +402,10 @@ if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
     length_files=$(ls -lR "$FASTQDIR/${folder}"/*$FASTQ_SUFFIX | wc -l) #get the number of files with fastq.gz extension
     echo "A total of $length_files fastq.gz files have been found and will be analyzed."
 
-    EXTRACT_SH=$(sbatch --dependency=afterok:${LENGTH_SH} --parsable --array=1-$length_files "$FUNCTIONSDIR/01_UMI_extract/umi_extract_1mm.sh" "$FASTQDIR" "$folder" "$WD" "$ADAPTER" "$FASTQ_SUFFIX")
+    EXTRACT_SH=$(sbatch --dependency=afterok:${LENGTH_SH} --parsable --array=1-$length_files "$FUNCTIONSDIR/01_ExtractUMI/umi_extract_1mm.sh" "$FASTQDIR" "$folder" "$WD" "$ADAPTER" "$FASTQ_SUFFIX")
     echo "umi_extract_1mm.sh script sent to the cluster with job ID $EXTRACT_SH."
 
-    GZIP_SH=$(sbatch --dependency=afterok:${EXTRACT_SH} --parsable "$FUNCTIONSDIR/01_UMI_extract/gzip.sh" "$folder" "$WD")
+    GZIP_SH=$(sbatch --dependency=afterok:${EXTRACT_SH} --parsable "$FUNCTIONSDIR/01_ExtractUMI/gzip.sh" "$folder" "$WD")
     echo "gzip.sh script sent to the cluster with job ID $GZIP_SH."
   done
   else
