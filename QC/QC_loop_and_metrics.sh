@@ -28,7 +28,7 @@ echo -e "Fastqscreen config file has been defined as $FASTQSCREEN_CONFIG. \n"
 echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX. \n"
 
 
-cd "$PROJECT/QC"
+cd "$FUNCTIONSDIR/QC"
 
 #============#
 #   FASTQC   #
