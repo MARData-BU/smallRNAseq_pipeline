@@ -24,7 +24,7 @@ echo -e "The batch that is now being processed is $folder."
 echo -e "The adapter has been defined as $ADAPTER."
 echo -e "The fastq suffix has been defined as $FASTQ_SUFFIX."
 
-OUTDIR=$WD/01_ExtractUMI/Fastq_Files/${folder}
+OUTDIR=$WD/01_UMI_extract/Fastq_Files/${folder}
 
 echo "Folders prepared."
 #--------------------

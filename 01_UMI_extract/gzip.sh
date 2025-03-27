@@ -11,7 +11,7 @@ WD=$2
 echo -e "Batch has been defined as $folder.\n"
 echo -e "Analysis directory has been defined as $WD.\n"
 
-OUTDIR=$WD/01_ExtractUMI/Fastq_Files/${folder}
+OUTDIR=$WD/01_UMI_extract/Fastq_Files/${folder}
 echo -e "Output directory will be $OUTDIR.\n"
 
 echo "Compressing files..."

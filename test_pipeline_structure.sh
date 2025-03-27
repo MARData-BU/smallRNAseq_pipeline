@@ -127,11 +127,11 @@ Also please consider the following points when populating the config_input_files
   -If you only require to run some parts of the pipeline, please consider the following:
       >This pipeline assumes that there will be 5 folders within your -project_analysis- directory:
         00_Length
-        01_ExtractUMI
+        01_UMI_extract
         02_Cutadapt
         03_Alignment
         04_Quantification
-      >Please note that if '01_umi_length_and_extract' is set to FALSE, the folders '00_Length' and '01_ExtractUMI' will not be generated and are not expected to exist. If this smallRNAseq analysis contains UMIs
+      >Please note that if '01_umi_length_and_extract' is set to FALSE, the folders '00_Length' and '01_UMI_extract' will not be generated and are not expected to exist. If this smallRNAseq analysis contains UMIs
       (UMIs set to TRUE) but '01_umi_length_and_extract' is set to FALSE (smallRNAseq contains UMIs, but UMI length and UMI extact are not to be run), the pipeline will expect the path $WD/02_Cutadapt/Trimmed_Files
       to contain .fastq.gz files in it.
       >If '02_cutadapt' is set to FALSE but '03_alignment' to TRUE, the pipeline will assume that the path $WD/02_Cutadapt/Trimmed_Files exists and contains .zip files generated from the alignment.
@@ -394,18 +394,18 @@ if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
     ===============
     Extracting UMIs
     ==============="
-    mkdir -p "$FUNCTIONSDIR/01_ExtractUMI/logs"
-    mkdir -p "$WD/01_ExtractUMI/Fastq_Files/${folder}"
-    cd "$FUNCTIONSDIR/01_ExtractUMI" || exit 1
-    echo "Path moved to $FUNCTIONSDIR/01_ExtractUMI."
+    mkdir -p "$FUNCTIONSDIR/01_UMI_extract/logs"
+    mkdir -p "$WD/01_UMI_extract/Fastq_Files/${folder}"
+    cd "$FUNCTIONSDIR/01_UMI_extract" || exit 1
+    echo "Path moved to $FUNCTIONSDIR/01_UMI_extract."
 
     length_files=$(ls -lR "$FASTQDIR/${folder}"/*$FASTQ_SUFFIX | wc -l) #get the number of files with fastq.gz extension
     echo "A total of $length_files fastq.gz files have been found and will be analyzed."
 
-    EXTRACT_SH=$(sbatch --dependency=afterok:${LENGTH_SH} --parsable --array=1-$length_files "$FUNCTIONSDIR/01_ExtractUMI/umi_extract_1mm.sh" "$FASTQDIR" "$folder" "$WD" "$ADAPTER" "$FASTQ_SUFFIX")
+    EXTRACT_SH=$(sbatch --dependency=afterok:${LENGTH_SH} --parsable --array=1-$length_files "$FUNCTIONSDIR/01_UMI_extract/umi_extract_1mm.sh" "$FASTQDIR" "$folder" "$WD" "$ADAPTER" "$FASTQ_SUFFIX")
     echo "umi_extract_1mm.sh script sent to the cluster with job ID $EXTRACT_SH."
 
-    GZIP_SH=$(sbatch --dependency=afterok:${EXTRACT_SH} --parsable "$FUNCTIONSDIR/01_ExtractUMI/gzip.sh" "$folder" "$WD")
+    GZIP_SH=$(sbatch --dependency=afterok:${EXTRACT_SH} --parsable "$FUNCTIONSDIR/01_UMI_extract/gzip.sh" "$folder" "$WD")
     echo "gzip.sh script sent to the cluster with job ID $GZIP_SH."
   done
   else
