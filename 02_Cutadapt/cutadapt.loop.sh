@@ -36,7 +36,8 @@ mkdir logs
 if [ $UMI == TRUE ]
   then
     length_files=$(ls -lR "$WD/01_UMI_extract/Fastq_Files/${folder}"/*$FASTQ_SUFFIX | wc -l) # Get the number of files with fastq.gz/.fq.gz extension
-    CUTADAPT=$(sbatch --parsable --array=1-$length_files $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $UMI $ADAPTER $FASTQDIR $FASTQ_SUFFIX $folder)
+    FASTQDIR_UMI=${WD}/01_UMI_extract/Fastq_Files/${folder}
+    CUTADAPT=$(sbatch --parsable --array=1-$length_files $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $UMI $ADAPTER $FASTQDIR_UMI $FASTQ_SUFFIX $folder)
     echo "cutadapt.sh jobs run and sent to the cluster with job ID $CUTADAPT."
 
     #sbatch $FUNCTIONSDIR/02_Cutadapt/gzip.sh $OUTDIR
