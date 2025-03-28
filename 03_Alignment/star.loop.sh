@@ -23,7 +23,7 @@ echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX.\n"
 # Prepare variables
 #------------------
 
-cd $WD/03_Alignment
+cd $FUNCTIONSDIR/03_Alignment
 
 #=========================#
 #   STAR ALIGNMENT        #
