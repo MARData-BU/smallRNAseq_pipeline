@@ -1,0 +1,39 @@
+mkdir: cannot create directory ‘/bicoh/MARGenomics/20250326_MFito_smallRNAseq/QC///FastqScreen’: File exists
+Using fastq_screen v0.14.1
+Reading configuration from '/bicoh/MARGenomics/AnalysisFiles/Index_Genomes_Bowtie2/fastq_screen.conf'
+Aligner (--aligner) not specified, but Bowtie2 path and index files found: mapping with Bowtie2
+Adding database Human
+Adding database Mouse
+Adding database Yeast
+Adding database Ecoli
+Adding database RibosomalMouse
+Adding database RibosomalHuman
+Adding database GlobinHuman
+Adding database RibosomalEuk_other
+Adding database RibosomalProk
+Adding database MT
+Adding database PhiX
+Adding database Lambda
+Adding database Vectors
+Adding database Adapters
+Using 6 threads for searches
+Option --subset set to 100000 reads
+Processing iMUDI173_S173_R1_001.fastq.gz
+Counting sequences in iMUDI173_S173_R1_001.fastq.gz
+Making reduced sequence file with ratio 37:1
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Human
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Mouse
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Yeast
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Ecoli
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against RibosomalMouse
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against RibosomalHuman
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against GlobinHuman
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against RibosomalEuk_other
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against RibosomalProk
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against MT
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against PhiX
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Lambda
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Vectors
+Searching iMUDI173_S173_R1_001.fastq.gz_temp_subset.fastq against Adapters
+Perl module GD::Graph::bars not installed, skipping charts
+Processing complete

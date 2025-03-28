@@ -1,0 +1,8 @@
+ls: cannot access '/bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis/02_Cutadapt/Trimmed_Files///*.gz': No such file or directory
+gzip: /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis/02_Cutadapt/Trimmed_Files///*.fastq.gz: No such file or directory
+[WARNING]         multiqc : MultiQC Version v1.28 now available!
+[INFO   ]         multiqc : This is MultiQC v1.10.1
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching   : /bicoh/MARGenomics/20250326_MFito_smallRNAseq/QC/QC_trimmed
+[WARNING]         multiqc : No analysis results found. Cleaning up..
+[INFO   ]         multiqc : MultiQC complete

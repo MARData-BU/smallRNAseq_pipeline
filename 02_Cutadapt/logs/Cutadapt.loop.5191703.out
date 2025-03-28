@@ -1,0 +1,15 @@
+Fastq directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq.
+
+Batch has been defined as /.
+
+Working directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis.
+
+Functions directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis/smallRNAseq_pipeline.
+
+UMI has been defined as TRUE.
+
+Adapter has been defined as AACTGTAGGCACCATCAAT.
+
+Fastq suffix has been defined as .fastq.gz.
+
+cutadapt.sh jobs run and sent to the cluster with job ID .

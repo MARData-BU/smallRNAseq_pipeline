@@ -1,0 +1,11 @@
+Python module loaded.
+The working directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis.
+The fastq directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq.
+The batch that is now being processed is /.
+The adapter has been defined as AACTGTAGGCACCATCAAT.
+The fastq suffix has been defined as .fastq.gz.
+Folders prepared.
+Computing sample iMUDI111_S111_R1_001
+Umi-tools performed.
+FastQC module loaded.
+Analysis complete for iMUDI111_S111_R1_001.fastq

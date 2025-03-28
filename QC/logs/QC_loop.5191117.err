@@ -1,0 +1,4 @@
+sbatch: unrecognized option '---array=1-192'
+Try "sbatch --help" for more information
+sbatch: error: Batch job submission failed: Job dependency problem
+sbatch: error: Batch job submission failed: Job dependency problem

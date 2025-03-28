@@ -1,0 +1,26 @@
+Project directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq. 
+
+Fastq directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq. 
+
+Functions directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis/smallRNAseq_pipeline. 
+
+Batch has been defined as /.
+
+Fastqscreen config file has been defined as /bicoh/MARGenomics/AnalysisFiles/Index_Genomes_Bowtie2/fastq_screen.conf. 
+
+Fastq suffix has been defined as .fastq.gz. 
+
+Creating QC and FastQC directories...
+
+Directories created.
+
+Fastqc scripts sent to the cluster.
+
+Creating FastqScreen directory...
+
+Directory created.
+
+Scripts sent. They will be launched once FastQC scripts have finished.
+
+MultiQC job sent. It will be run once the FASTQC and FASTQSCREEN jobs have finished. 
+

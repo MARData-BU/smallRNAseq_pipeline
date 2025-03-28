@@ -1,0 +1,385 @@
+The working directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis.
+The fastq directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq.
+The batch that is now being processed is /.
+The adapter has been defined as AACTGTAGGCACCATCAAT.
+The fastq suffix has been defined as .fastq.gz.
+iMUDI097_S97_R1_001.fastq.gz
+iMUDI097_S97_R1_001.fastq.gz Saved into file with only sequences
+iMUDI098_S98_R1_001.fastq.gz
+iMUDI098_S98_R1_001.fastq.gz Saved into file with only sequences
+iMUDI099_S99_R1_001.fastq.gz
+iMUDI099_S99_R1_001.fastq.gz Saved into file with only sequences
+iMUDI100_S100_R1_001.fastq.gz
+iMUDI100_S100_R1_001.fastq.gz Saved into file with only sequences
+iMUDI101_S101_R1_001.fastq.gz
+iMUDI101_S101_R1_001.fastq.gz Saved into file with only sequences
+iMUDI102_S102_R1_001.fastq.gz
+iMUDI102_S102_R1_001.fastq.gz Saved into file with only sequences
+iMUDI103_S103_R1_001.fastq.gz
+iMUDI103_S103_R1_001.fastq.gz Saved into file with only sequences
+iMUDI104_S104_R1_001.fastq.gz
+iMUDI104_S104_R1_001.fastq.gz Saved into file with only sequences
+iMUDI105_S105_R1_001.fastq.gz
+iMUDI105_S105_R1_001.fastq.gz Saved into file with only sequences
+iMUDI106_S106_R1_001.fastq.gz
+iMUDI106_S106_R1_001.fastq.gz Saved into file with only sequences
+iMUDI107_S107_R1_001.fastq.gz
+iMUDI107_S107_R1_001.fastq.gz Saved into file with only sequences
+iMUDI108_S108_R1_001.fastq.gz
+iMUDI108_S108_R1_001.fastq.gz Saved into file with only sequences
+iMUDI109_S109_R1_001.fastq.gz
+iMUDI109_S109_R1_001.fastq.gz Saved into file with only sequences
+iMUDI110_S110_R1_001.fastq.gz
+iMUDI110_S110_R1_001.fastq.gz Saved into file with only sequences
+iMUDI111_S111_R1_001.fastq.gz
+iMUDI111_S111_R1_001.fastq.gz Saved into file with only sequences
+iMUDI112_S112_R1_001.fastq.gz
+iMUDI112_S112_R1_001.fastq.gz Saved into file with only sequences
+iMUDI113_S113_R1_001.fastq.gz
+iMUDI113_S113_R1_001.fastq.gz Saved into file with only sequences
+iMUDI114_S114_R1_001.fastq.gz
+iMUDI114_S114_R1_001.fastq.gz Saved into file with only sequences
+iMUDI115_S115_R1_001.fastq.gz
+iMUDI115_S115_R1_001.fastq.gz Saved into file with only sequences
+iMUDI116_S116_R1_001.fastq.gz
+iMUDI116_S116_R1_001.fastq.gz Saved into file with only sequences
+iMUDI117_S117_R1_001.fastq.gz
+iMUDI117_S117_R1_001.fastq.gz Saved into file with only sequences
+iMUDI118_S118_R1_001.fastq.gz
+iMUDI118_S118_R1_001.fastq.gz Saved into file with only sequences
+iMUDI119_S119_R1_001.fastq.gz
+iMUDI119_S119_R1_001.fastq.gz Saved into file with only sequences
+iMUDI120_S120_R1_001.fastq.gz
+iMUDI120_S120_R1_001.fastq.gz Saved into file with only sequences
+iMUDI121_S121_R1_001.fastq.gz
+iMUDI121_S121_R1_001.fastq.gz Saved into file with only sequences
+iMUDI122_S122_R1_001.fastq.gz
+iMUDI122_S122_R1_001.fastq.gz Saved into file with only sequences
+iMUDI123_S123_R1_001.fastq.gz
+iMUDI123_S123_R1_001.fastq.gz Saved into file with only sequences
+iMUDI124_S124_R1_001.fastq.gz
+iMUDI124_S124_R1_001.fastq.gz Saved into file with only sequences
+iMUDI125_S125_R1_001.fastq.gz
+iMUDI125_S125_R1_001.fastq.gz Saved into file with only sequences
+iMUDI126_S126_R1_001.fastq.gz
+iMUDI126_S126_R1_001.fastq.gz Saved into file with only sequences
+iMUDI127_S127_R1_001.fastq.gz
+iMUDI127_S127_R1_001.fastq.gz Saved into file with only sequences
+iMUDI128_S128_R1_001.fastq.gz
+iMUDI128_S128_R1_001.fastq.gz Saved into file with only sequences
+iMUDI129_S129_R1_001.fastq.gz
+iMUDI129_S129_R1_001.fastq.gz Saved into file with only sequences
+iMUDI130_S130_R1_001.fastq.gz
+iMUDI130_S130_R1_001.fastq.gz Saved into file with only sequences
+iMUDI131_S131_R1_001.fastq.gz
+iMUDI131_S131_R1_001.fastq.gz Saved into file with only sequences
+iMUDI132_S132_R1_001.fastq.gz
+iMUDI132_S132_R1_001.fastq.gz Saved into file with only sequences
+iMUDI133_S133_R1_001.fastq.gz
+iMUDI133_S133_R1_001.fastq.gz Saved into file with only sequences
+iMUDI134_S134_R1_001.fastq.gz
+iMUDI134_S134_R1_001.fastq.gz Saved into file with only sequences
+iMUDI135_S135_R1_001.fastq.gz
+iMUDI135_S135_R1_001.fastq.gz Saved into file with only sequences
+iMUDI136_S136_R1_001.fastq.gz
+iMUDI136_S136_R1_001.fastq.gz Saved into file with only sequences
+iMUDI137_S137_R1_001.fastq.gz
+iMUDI137_S137_R1_001.fastq.gz Saved into file with only sequences
+iMUDI138_S138_R1_001.fastq.gz
+iMUDI138_S138_R1_001.fastq.gz Saved into file with only sequences
+iMUDI139_S139_R1_001.fastq.gz
+iMUDI139_S139_R1_001.fastq.gz Saved into file with only sequences
+iMUDI140_S140_R1_001.fastq.gz
+iMUDI140_S140_R1_001.fastq.gz Saved into file with only sequences
+iMUDI141_S141_R1_001.fastq.gz
+iMUDI141_S141_R1_001.fastq.gz Saved into file with only sequences
+iMUDI142_S142_R1_001.fastq.gz
+iMUDI142_S142_R1_001.fastq.gz Saved into file with only sequences
+iMUDI143_S143_R1_001.fastq.gz
+iMUDI143_S143_R1_001.fastq.gz Saved into file with only sequences
+iMUDI144_S144_R1_001.fastq.gz
+iMUDI144_S144_R1_001.fastq.gz Saved into file with only sequences
+iMUDI145_S145_R1_001.fastq.gz
+iMUDI145_S145_R1_001.fastq.gz Saved into file with only sequences
+iMUDI146_S146_R1_001.fastq.gz
+iMUDI146_S146_R1_001.fastq.gz Saved into file with only sequences
+iMUDI147_S147_R1_001.fastq.gz
+iMUDI147_S147_R1_001.fastq.gz Saved into file with only sequences
+iMUDI148_S148_R1_001.fastq.gz
+iMUDI148_S148_R1_001.fastq.gz Saved into file with only sequences
+iMUDI149_S149_R1_001.fastq.gz
+iMUDI149_S149_R1_001.fastq.gz Saved into file with only sequences
+iMUDI150_S150_R1_001.fastq.gz
+iMUDI150_S150_R1_001.fastq.gz Saved into file with only sequences
+iMUDI151_S151_R1_001.fastq.gz
+iMUDI151_S151_R1_001.fastq.gz Saved into file with only sequences
+iMUDI152_S152_R1_001.fastq.gz
+iMUDI152_S152_R1_001.fastq.gz Saved into file with only sequences
+iMUDI153_S153_R1_001.fastq.gz
+iMUDI153_S153_R1_001.fastq.gz Saved into file with only sequences
+iMUDI154_S154_R1_001.fastq.gz
+iMUDI154_S154_R1_001.fastq.gz Saved into file with only sequences
+iMUDI155_S155_R1_001.fastq.gz
+iMUDI155_S155_R1_001.fastq.gz Saved into file with only sequences
+iMUDI156_S156_R1_001.fastq.gz
+iMUDI156_S156_R1_001.fastq.gz Saved into file with only sequences
+iMUDI157_S157_R1_001.fastq.gz
+iMUDI157_S157_R1_001.fastq.gz Saved into file with only sequences
+iMUDI158_S158_R1_001.fastq.gz
+iMUDI158_S158_R1_001.fastq.gz Saved into file with only sequences
+iMUDI159_S159_R1_001.fastq.gz
+iMUDI159_S159_R1_001.fastq.gz Saved into file with only sequences
+iMUDI160_S160_R1_001.fastq.gz
+iMUDI160_S160_R1_001.fastq.gz Saved into file with only sequences
+iMUDI161_S161_R1_001.fastq.gz
+iMUDI161_S161_R1_001.fastq.gz Saved into file with only sequences
+iMUDI162_S162_R1_001.fastq.gz
+iMUDI162_S162_R1_001.fastq.gz Saved into file with only sequences
+iMUDI163_S163_R1_001.fastq.gz
+iMUDI163_S163_R1_001.fastq.gz Saved into file with only sequences
+iMUDI164_S164_R1_001.fastq.gz
+iMUDI164_S164_R1_001.fastq.gz Saved into file with only sequences
+iMUDI165_S165_R1_001.fastq.gz
+iMUDI165_S165_R1_001.fastq.gz Saved into file with only sequences
+iMUDI166_S166_R1_001.fastq.gz
+iMUDI166_S166_R1_001.fastq.gz Saved into file with only sequences
+iMUDI167_S167_R1_001.fastq.gz
+iMUDI167_S167_R1_001.fastq.gz Saved into file with only sequences
+iMUDI168_S168_R1_001.fastq.gz
+iMUDI168_S168_R1_001.fastq.gz Saved into file with only sequences
+iMUDI169_S169_R1_001.fastq.gz
+iMUDI169_S169_R1_001.fastq.gz Saved into file with only sequences
+iMUDI170_S170_R1_001.fastq.gz
+iMUDI170_S170_R1_001.fastq.gz Saved into file with only sequences
+iMUDI171_S171_R1_001.fastq.gz
+iMUDI171_S171_R1_001.fastq.gz Saved into file with only sequences
+iMUDI172_S172_R1_001.fastq.gz
+iMUDI172_S172_R1_001.fastq.gz Saved into file with only sequences
+iMUDI173_S173_R1_001.fastq.gz
+iMUDI173_S173_R1_001.fastq.gz Saved into file with only sequences
+iMUDI174_S174_R1_001.fastq.gz
+iMUDI174_S174_R1_001.fastq.gz Saved into file with only sequences
+iMUDI175_S175_R1_001.fastq.gz
+iMUDI175_S175_R1_001.fastq.gz Saved into file with only sequences
+iMUDI176_S176_R1_001.fastq.gz
+iMUDI176_S176_R1_001.fastq.gz Saved into file with only sequences
+iMUDI177_S177_R1_001.fastq.gz
+iMUDI177_S177_R1_001.fastq.gz Saved into file with only sequences
+iMUDI178_S178_R1_001.fastq.gz
+iMUDI178_S178_R1_001.fastq.gz Saved into file with only sequences
+iMUDI179_S179_R1_001.fastq.gz
+iMUDI179_S179_R1_001.fastq.gz Saved into file with only sequences
+iMUDI180_S180_R1_001.fastq.gz
+iMUDI180_S180_R1_001.fastq.gz Saved into file with only sequences
+iMUDI181_S181_R1_001.fastq.gz
+iMUDI181_S181_R1_001.fastq.gz Saved into file with only sequences
+iMUDI182_S182_R1_001.fastq.gz
+iMUDI182_S182_R1_001.fastq.gz Saved into file with only sequences
+iMUDI183_S183_R1_001.fastq.gz
+iMUDI183_S183_R1_001.fastq.gz Saved into file with only sequences
+iMUDI184_S184_R1_001.fastq.gz
+iMUDI184_S184_R1_001.fastq.gz Saved into file with only sequences
+iMUDI185_S185_R1_001.fastq.gz
+iMUDI185_S185_R1_001.fastq.gz Saved into file with only sequences
+iMUDI186_S186_R1_001.fastq.gz
+iMUDI186_S186_R1_001.fastq.gz Saved into file with only sequences
+iMUDI187_S187_R1_001.fastq.gz
+iMUDI187_S187_R1_001.fastq.gz Saved into file with only sequences
+iMUDI188_S188_R1_001.fastq.gz
+iMUDI188_S188_R1_001.fastq.gz Saved into file with only sequences
+iMUDI189_S189_R1_001.fastq.gz
+iMUDI189_S189_R1_001.fastq.gz Saved into file with only sequences
+iMUDI191_S191_R1_001.fastq.gz
+iMUDI191_S191_R1_001.fastq.gz Saved into file with only sequences
+iMUDI192_S192_R1_001.fastq.gz
+iMUDI192_S192_R1_001.fastq.gz Saved into file with only sequences
+iMUDI193_S1_R1_001.fastq.gz
+iMUDI193_S1_R1_001.fastq.gz Saved into file with only sequences
+iMUDI194_S2_R1_001.fastq.gz
+iMUDI194_S2_R1_001.fastq.gz Saved into file with only sequences
+iMUDI195_S3_R1_001.fastq.gz
+iMUDI195_S3_R1_001.fastq.gz Saved into file with only sequences
+iMUDI196_S4_R1_001.fastq.gz
+iMUDI196_S4_R1_001.fastq.gz Saved into file with only sequences
+iMUDI197_S5_R1_001.fastq.gz
+iMUDI197_S5_R1_001.fastq.gz Saved into file with only sequences
+iMUDI198_S6_R1_001.fastq.gz
+iMUDI198_S6_R1_001.fastq.gz Saved into file with only sequences
+iMUDI199_S7_R1_001.fastq.gz
+iMUDI199_S7_R1_001.fastq.gz Saved into file with only sequences
+iMUDI200_S8_R1_001.fastq.gz
+iMUDI200_S8_R1_001.fastq.gz Saved into file with only sequences
+iMUDI201_S9_R1_001.fastq.gz
+iMUDI201_S9_R1_001.fastq.gz Saved into file with only sequences
+iMUDI202_S10_R1_001.fastq.gz
+iMUDI202_S10_R1_001.fastq.gz Saved into file with only sequences
+iMUDI203_S11_R1_001.fastq.gz
+iMUDI203_S11_R1_001.fastq.gz Saved into file with only sequences
+iMUDI204_S12_R1_001.fastq.gz
+iMUDI204_S12_R1_001.fastq.gz Saved into file with only sequences
+iMUDI205_S13_R1_001.fastq.gz
+iMUDI205_S13_R1_001.fastq.gz Saved into file with only sequences
+iMUDI206_S14_R1_001.fastq.gz
+iMUDI206_S14_R1_001.fastq.gz Saved into file with only sequences
+iMUDI207_S15_R1_001.fastq.gz
+iMUDI207_S15_R1_001.fastq.gz Saved into file with only sequences
+iMUDI208_S16_R1_001.fastq.gz
+iMUDI208_S16_R1_001.fastq.gz Saved into file with only sequences
+iMUDI210_S18_R1_001.fastq.gz
+iMUDI210_S18_R1_001.fastq.gz Saved into file with only sequences
+iMUDI211_S19_R1_001.fastq.gz
+iMUDI211_S19_R1_001.fastq.gz Saved into file with only sequences
+iMUDI212_S20_R1_001.fastq.gz
+iMUDI212_S20_R1_001.fastq.gz Saved into file with only sequences
+iMUDI213_S21_R1_001.fastq.gz
+iMUDI213_S21_R1_001.fastq.gz Saved into file with only sequences
+iMUDI214_S22_R1_001.fastq.gz
+iMUDI214_S22_R1_001.fastq.gz Saved into file with only sequences
+iMUDI215_S23_R1_001.fastq.gz
+iMUDI215_S23_R1_001.fastq.gz Saved into file with only sequences
+iMUDI217_S25_R1_001.fastq.gz
+iMUDI217_S25_R1_001.fastq.gz Saved into file with only sequences
+iMUDI218_S26_R1_001.fastq.gz
+iMUDI218_S26_R1_001.fastq.gz Saved into file with only sequences
+iMUDI219_S27_R1_001.fastq.gz
+iMUDI219_S27_R1_001.fastq.gz Saved into file with only sequences
+iMUDI220_S28_R1_001.fastq.gz
+iMUDI220_S28_R1_001.fastq.gz Saved into file with only sequences
+iMUDI221_S29_R1_001.fastq.gz
+iMUDI221_S29_R1_001.fastq.gz Saved into file with only sequences
+iMUDI222_S30_R1_001.fastq.gz
+iMUDI222_S30_R1_001.fastq.gz Saved into file with only sequences
+iMUDI223_S31_R1_001.fastq.gz
+iMUDI223_S31_R1_001.fastq.gz Saved into file with only sequences
+iMUDI224_S32_R1_001.fastq.gz
+iMUDI224_S32_R1_001.fastq.gz Saved into file with only sequences
+iMUDI225_S33_R1_001.fastq.gz
+iMUDI225_S33_R1_001.fastq.gz Saved into file with only sequences
+iMUDI226_S34_R1_001.fastq.gz
+iMUDI226_S34_R1_001.fastq.gz Saved into file with only sequences
+iMUDI227_S35_R1_001.fastq.gz
+iMUDI227_S35_R1_001.fastq.gz Saved into file with only sequences
+iMUDI228_S36_R1_001.fastq.gz
+iMUDI228_S36_R1_001.fastq.gz Saved into file with only sequences
+iMUDI229_S37_R1_001.fastq.gz
+iMUDI229_S37_R1_001.fastq.gz Saved into file with only sequences
+iMUDI230_S38_R1_001.fastq.gz
+iMUDI230_S38_R1_001.fastq.gz Saved into file with only sequences
+iMUDI231_S39_R1_001.fastq.gz
+iMUDI231_S39_R1_001.fastq.gz Saved into file with only sequences
+iMUDI232_S40_R1_001.fastq.gz
+iMUDI232_S40_R1_001.fastq.gz Saved into file with only sequences
+iMUDI233_S41_R1_001.fastq.gz
+iMUDI233_S41_R1_001.fastq.gz Saved into file with only sequences
+iMUDI234_S42_R1_001.fastq.gz
+iMUDI234_S42_R1_001.fastq.gz Saved into file with only sequences
+iMUDI235_S43_R1_001.fastq.gz
+iMUDI235_S43_R1_001.fastq.gz Saved into file with only sequences
+iMUDI236_S44_R1_001.fastq.gz
+iMUDI236_S44_R1_001.fastq.gz Saved into file with only sequences
+iMUDI237_S45_R1_001.fastq.gz
+iMUDI237_S45_R1_001.fastq.gz Saved into file with only sequences
+iMUDI238_S46_R1_001.fastq.gz
+iMUDI238_S46_R1_001.fastq.gz Saved into file with only sequences
+iMUDI239_S47_R1_001.fastq.gz
+iMUDI239_S47_R1_001.fastq.gz Saved into file with only sequences
+iMUDI240_S48_R1_001.fastq.gz
+iMUDI240_S48_R1_001.fastq.gz Saved into file with only sequences
+iMUDI241_S49_R1_001.fastq.gz
+iMUDI241_S49_R1_001.fastq.gz Saved into file with only sequences
+iMUDI242_S50_R1_001.fastq.gz
+iMUDI242_S50_R1_001.fastq.gz Saved into file with only sequences
+iMUDI243_S51_R1_001.fastq.gz
+iMUDI243_S51_R1_001.fastq.gz Saved into file with only sequences
+iMUDI244_S52_R1_001.fastq.gz
+iMUDI244_S52_R1_001.fastq.gz Saved into file with only sequences
+iMUDI245_S53_R1_001.fastq.gz
+iMUDI245_S53_R1_001.fastq.gz Saved into file with only sequences
+iMUDI246_S54_R1_001.fastq.gz
+iMUDI246_S54_R1_001.fastq.gz Saved into file with only sequences
+iMUDI247_S55_R1_001.fastq.gz
+iMUDI247_S55_R1_001.fastq.gz Saved into file with only sequences
+iMUDI248_S56_R1_001.fastq.gz
+iMUDI248_S56_R1_001.fastq.gz Saved into file with only sequences
+iMUDI249_S57_R1_001.fastq.gz
+iMUDI249_S57_R1_001.fastq.gz Saved into file with only sequences
+iMUDI250_S58_R1_001.fastq.gz
+iMUDI250_S58_R1_001.fastq.gz Saved into file with only sequences
+iMUDI251_S59_R1_001.fastq.gz
+iMUDI251_S59_R1_001.fastq.gz Saved into file with only sequences
+iMUDI252_S60_R1_001.fastq.gz
+iMUDI252_S60_R1_001.fastq.gz Saved into file with only sequences
+iMUDI253_S61_R1_001.fastq.gz
+iMUDI253_S61_R1_001.fastq.gz Saved into file with only sequences
+iMUDI254_S62_R1_001.fastq.gz
+iMUDI254_S62_R1_001.fastq.gz Saved into file with only sequences
+iMUDI255_S63_R1_001.fastq.gz
+iMUDI255_S63_R1_001.fastq.gz Saved into file with only sequences
+iMUDI256_S64_R1_001.fastq.gz
+iMUDI256_S64_R1_001.fastq.gz Saved into file with only sequences
+iMUDI257_S65_R1_001.fastq.gz
+iMUDI257_S65_R1_001.fastq.gz Saved into file with only sequences
+iMUDI258_S66_R1_001.fastq.gz
+iMUDI258_S66_R1_001.fastq.gz Saved into file with only sequences
+iMUDI259_S67_R1_001.fastq.gz
+iMUDI259_S67_R1_001.fastq.gz Saved into file with only sequences
+iMUDI260_S68_R1_001.fastq.gz
+iMUDI260_S68_R1_001.fastq.gz Saved into file with only sequences
+iMUDI261_S69_R1_001.fastq.gz
+iMUDI261_S69_R1_001.fastq.gz Saved into file with only sequences
+iMUDI262_S70_R1_001.fastq.gz
+iMUDI262_S70_R1_001.fastq.gz Saved into file with only sequences
+iMUDI263_S71_R1_001.fastq.gz
+iMUDI263_S71_R1_001.fastq.gz Saved into file with only sequences
+iMUDI264_S72_R1_001.fastq.gz
+iMUDI264_S72_R1_001.fastq.gz Saved into file with only sequences
+iMUDI265_S73_R1_001.fastq.gz
+iMUDI265_S73_R1_001.fastq.gz Saved into file with only sequences
+iMUDI266_S74_R1_001.fastq.gz
+iMUDI266_S74_R1_001.fastq.gz Saved into file with only sequences
+iMUDI267_S75_R1_001.fastq.gz
+iMUDI267_S75_R1_001.fastq.gz Saved into file with only sequences
+iMUDI268_S76_R1_001.fastq.gz
+iMUDI268_S76_R1_001.fastq.gz Saved into file with only sequences
+iMUDI269_S77_R1_001.fastq.gz
+iMUDI269_S77_R1_001.fastq.gz Saved into file with only sequences
+iMUDI270_S78_R1_001.fastq.gz
+iMUDI270_S78_R1_001.fastq.gz Saved into file with only sequences
+iMUDI271_S79_R1_001.fastq.gz
+iMUDI271_S79_R1_001.fastq.gz Saved into file with only sequences
+iMUDI272_S80_R1_001.fastq.gz
+iMUDI272_S80_R1_001.fastq.gz Saved into file with only sequences
+iMUDI273_S81_R1_001.fastq.gz
+iMUDI273_S81_R1_001.fastq.gz Saved into file with only sequences
+iMUDI274_S82_R1_001.fastq.gz
+iMUDI274_S82_R1_001.fastq.gz Saved into file with only sequences
+iMUDI275_S83_R1_001.fastq.gz
+iMUDI275_S83_R1_001.fastq.gz Saved into file with only sequences
+iMUDI276_S84_R1_001.fastq.gz
+iMUDI276_S84_R1_001.fastq.gz Saved into file with only sequences
+iMUDI277_S85_R1_001.fastq.gz
+iMUDI277_S85_R1_001.fastq.gz Saved into file with only sequences
+iMUDI278_S86_R1_001.fastq.gz
+iMUDI278_S86_R1_001.fastq.gz Saved into file with only sequences
+iMUDI279_S87_R1_001.fastq.gz
+iMUDI279_S87_R1_001.fastq.gz Saved into file with only sequences
+iMUDI280_S88_R1_001.fastq.gz
+iMUDI280_S88_R1_001.fastq.gz Saved into file with only sequences
+iMUDI281_S89_R1_001.fastq.gz
+iMUDI281_S89_R1_001.fastq.gz Saved into file with only sequences
+iMUDI282_S90_R1_001.fastq.gz
+iMUDI282_S90_R1_001.fastq.gz Saved into file with only sequences
+iMUDI283_S91_R1_001.fastq.gz
+iMUDI283_S91_R1_001.fastq.gz Saved into file with only sequences
+iMUDI284_S92_R1_001.fastq.gz
+iMUDI284_S92_R1_001.fastq.gz Saved into file with only sequences
+iMUDI285_S93_R1_001.fastq.gz
+iMUDI285_S93_R1_001.fastq.gz Saved into file with only sequences
+iMUDI286_S94_R1_001.fastq.gz
+iMUDI286_S94_R1_001.fastq.gz Saved into file with only sequences
+iMUDI287_S95_R1_001.fastq.gz
+iMUDI287_S95_R1_001.fastq.gz Saved into file with only sequences
+iMUDI288_S96_R1_001.fastq.gz
+iMUDI288_S96_R1_001.fastq.gz Saved into file with only sequences
+iMUDI770_S190_R1_001.fastq.gz
+iMUDI770_S190_R1_001.fastq.gz Saved into file with only sequences

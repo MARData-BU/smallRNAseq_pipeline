@@ -1,0 +1,13 @@
+FasQC module loaded.
+Project directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq. 
+
+Batch has been defined as /.
+
+Fastq directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq. 
+
+Fastq suffix has been defined as .fastq.gz. 
+
+Analyzing sample /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq///iMUDI175_S175_R1_001.fastq.gz.
+
+Analysis complete for iMUDI175_S175_R1_001.fastq.gz
+FastQC run.

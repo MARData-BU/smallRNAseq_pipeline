@@ -14,13 +14,13 @@ UMI=$5
 ADAPTER=$6
 FASTQ_SUFFIX=$7
 
-echo -e "Fastq directory has been defined as $FASTQDIR.\n" 
-echo -e "Batch has been defined as $folder.\n" 
-echo -e "Working directory has been defined as $WD.\n" 
-echo -e "Functions directory has been defined as $FUNCTIONSDIR.\n" 
-echo -e "UMI has been defined as $UMI.\n" 
-echo -e "Adapter has been defined as $ADAPTER.\n" 
-echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX.\n" 
+echo -e "Fastq directory has been defined as $FASTQDIR.\n"
+echo -e "Batch has been defined as $folder.\n"
+echo -e "Working directory has been defined as $WD.\n"
+echo -e "Functions directory has been defined as $FUNCTIONSDIR.\n"
+echo -e "UMI has been defined as $UMI.\n"
+echo -e "Adapter has been defined as $ADAPTER.\n"
+echo -e "Fastq suffix has been defined as $FASTQ_SUFFIX.\n"
 
 # Prepare variables
 #------------------
@@ -35,7 +35,7 @@ mkdir logs
 #=========================#
 if [ $UMI == TRUE ]
   then
-    length_files=$(ls -lR "$WD/01_ExtractUMI/Fastq_Files/${folder}"/*$FASTQ_SUFFIX | wc -l) # Get the number of files with fastq.gz/.fq.gz extension
+    length_files=$(ls -lR "$WD/01_UMI_extract/Fastq_Files/${folder}"/*$FASTQ_SUFFIX | wc -l) # Get the number of files with fastq.gz/.fq.gz extension
     CUTADAPT=$(sbatch --parsable --array=1-$length_files $FUNCTIONSDIR/02_Cutadapt/cutadapt.sh $OUTDIR $UMI $ADAPTER $FASTQDIR $FASTQ_SUFFIX $folder)
     echo "cutadapt.sh jobs run and sent to the cluster with job ID $CUTADAPT."
 

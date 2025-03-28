@@ -1,0 +1,15 @@
+mkdir: cannot create directory ‘/bicoh/MARGenomics/20250326_MFito_smallRNAseq/QC/multiQC’: File exists
+[WARNING]         multiqc : MultiQC Version v1.28 now available!
+[INFO   ]         multiqc : This is MultiQC v1.10.1
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching   : /bicoh/MARGenomics/20250326_MFito_smallRNAseq/QC
+[INFO   ]    fastq_screen : Found 191 reports
+[WARNING]          fastqc : Couldn't read 'iMUDI216_S24_R1_001_fastqc.zip' - Bad zip file
+[WARNING]          fastqc : Couldn't read 'iMUDI216_S24_R1_001_fastqc.zip' - Bad zip file
+[INFO   ]          fastqc : Found 191 reports
+[INFO   ]         multiqc : Compressing plot data
+[WARNING]         multiqc : Deleting    : multiQC/multiqc_report.html   (-f was specified)
+[WARNING]         multiqc : Deleting    : multiQC/multiqc_data   (-f was specified)
+[INFO   ]         multiqc : Report      : multiQC/multiqc_report.html
+[INFO   ]         multiqc : Data        : multiQC/multiqc_data
+[INFO   ]         multiqc : MultiQC complete

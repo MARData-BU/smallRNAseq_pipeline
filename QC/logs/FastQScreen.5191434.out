@@ -1,0 +1,15 @@
+FastQScreen and Bowtie modules loaded.
+Project directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq. 
+
+Batch has been defined as /.
+
+Functions directory has been defined as /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis/smallRNAseq_pipeline. 
+
+Fastqscreen config file has been defined as /bicoh/MARGenomics/AnalysisFiles/Index_Genomes_Bowtie2/fastq_screen.conf. 
+
+Fastq suffix has been defined as .fastq.gz. 
+
+-eThe output directory is /bicoh/MARGenomics/20250326_MFito_smallRNAseq/QC///FastqScreen.\n
+Processing file /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq///iMUDI212_S20_R1_001.fastq.gz.
+
+FastQScreen run.

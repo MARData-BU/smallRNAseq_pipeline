@@ -1,0 +1,10 @@
+Started analysis of iMUDI216_S24_R1_001.fastq.gz
+Failed to process file iMUDI216_S24_R1_001.fastq.gz
+java.lang.ArrayIndexOutOfBoundsException: -1
+	at uk.ac.babraham.FastQC.Modules.SequenceLengthDistribution.calculateDistribution(SequenceLengthDistribution.java:100)
+	at uk.ac.babraham.FastQC.Modules.SequenceLengthDistribution.raisesError(SequenceLengthDistribution.java:184)
+	at uk.ac.babraham.FastQC.Report.HTMLReportArchive.startDocument(HTMLReportArchive.java:336)
+	at uk.ac.babraham.FastQC.Report.HTMLReportArchive.<init>(HTMLReportArchive.java:84)
+	at uk.ac.babraham.FastQC.Analysis.OfflineRunner.analysisComplete(OfflineRunner.java:178)
+	at uk.ac.babraham.FastQC.Analysis.AnalysisRunner.run(AnalysisRunner.java:110)
+	at java.lang.Thread.run(Thread.java:748)

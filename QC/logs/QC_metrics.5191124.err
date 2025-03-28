@@ -1,0 +1,11 @@
+[WARNING]         multiqc : MultiQC Version v1.28 now available!
+[INFO   ]         multiqc : This is MultiQC v1.10.1
+[INFO   ]         multiqc : Template    : default
+[INFO   ]         multiqc : Searching   : /bicoh/MARGenomics/20250326_MFito_smallRNAseq/QC
+[INFO   ]    fastq_screen : Found 191 reports
+[WARNING]          fastqc : Couldn't read 'iMUDI216_S24_R1_001_fastqc.zip' - Bad zip file
+[INFO   ]          fastqc : Found 191 reports
+[INFO   ]         multiqc : Compressing plot data
+[INFO   ]         multiqc : Report      : multiQC/multiqc_report.html
+[INFO   ]         multiqc : Data        : multiQC/multiqc_data
+[INFO   ]         multiqc : MultiQC complete
