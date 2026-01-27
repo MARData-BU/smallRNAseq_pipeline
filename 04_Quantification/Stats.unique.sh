@@ -34,8 +34,10 @@ echo "Files for multiQC copied."
 
 cd $PROJECT/QC/${folder}/QC_trimmed/
 module purge
-module load  Python/3.8.6-GCCcore-10.2.0
-echo "Python module loaded."
+module load Miniconda3/202411
+eval "$(/soft/system/software/Miniconda3/202411/bin/conda shell.bash hook)"
+conda activate multiqc
+echo "multiqc env loaded."
 
 multiqc -f .
 echo "MultiQC run."

@@ -18,7 +18,7 @@ UMI=$6
 
 cd $WD/03_Alignment
 
-module load Subread/2.0.3
+module load subread/2.1.1
 echo "Subread module loaded."
 
 if [ $UMI == TRUE ]
@@ -47,7 +47,7 @@ if [ $UMI == TRUE ]
     ######################################################################################################
     ##################################### INDEX ########################################################
     module purge
-    module load SAMtools/1.12-GCC-10.2.0
+    module load SAMtools/1.22-i7
     echo "SAMtools module loaded."
 
     samtools sort ${featurecountsDIR}/${name}.featureCounts.bam -o ${featurecountsDIR}/${name}_sorted.bam;
@@ -56,8 +56,10 @@ if [ $UMI == TRUE ]
     ######################################################################################################
     ##################################### UMI COUNT ########################################################
     module purge
-    module load  Python/3.8.6-GCCcore-10.2.0
-    echo "Python module loaded."
+    module load Miniconda3/202411
+    eval "$(/soft/system/software/Miniconda3/202411/bin/conda shell.bash hook)"
+    conda activate umi_tools
+    echo "umi_tools env loaded."
 
     # Count UMIs per gene per cell (unique method)
     umi_tools count --per-gene --gene-tag=XT --method=unique -I ${featurecountsDIR}/${name}_sorted.bam -S ${umicountsDIR}/${name}.tsv # the tsv files will be merged with R afterwards
@@ -82,8 +84,10 @@ if [ $UMI == TRUE ]
     cd $PROJECT/QC/${folder}/QC_trimmed/
 
     module purge
-    module load  Python/3.8.6-GCCcore-10.2.0
-    echo "Python module loaded."
+    module load Miniconda3/202411
+    eval "$(/soft/system/software/Miniconda3/202411/bin/conda shell.bash hook)"
+    conda activate multiqc
+    echo "multiqc loaded."
 
     multiqc -f .
     echo "MultiQC run."

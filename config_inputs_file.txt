@@ -1,14 +1,14 @@
 merge: FALSE
 quality: FALSE
-01_umi_length_and_extract: TRUE
-02_cutadapt: TRUE
-03_alignment: TRUE
+01_umi_extract: FALSE
+02_cutadapt: FALSE
+03_alignment: FALSE
 04_quantification: TRUE
 
-project_directory: /bicoh/MARGenomics/20250326_MFito_smallRNAseq
-project_analysis: /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis
-functions: /bicoh/MARGenomics/20250326_MFito_smallRNAseq/Analysis/smallRNAseq_pipeline
-fastq_directory: /bicoh/MARGenomics/20250326_MFito_smallRNAseq/rawData/fastq
+project_directory: /bicoh/MARGenomics/20250326_MFito_smallRNAseq_REGICOR_PREDIMED_CI
+project_analysis: /bicoh/MARGenomics/20250326_MFito_smallRNAseq_REGICOR_PREDIMED_CI/Analysis_20250909/smallRNAseq_pipeline
+functions: /bicoh/MARGenomics/20250326_MFito_smallRNAseq_REGICOR_PREDIMED_CI/Analysis_20250909/smallRNAseq_pipeline
+fastq_directory: /bicoh/MARGenomics/20250326_MFito_smallRNAseq_REGICOR_PREDIMED_CI/rawData/fastq_20250909
 batch_num: 1
 batch_folder: NA
 UMIs: TRUE

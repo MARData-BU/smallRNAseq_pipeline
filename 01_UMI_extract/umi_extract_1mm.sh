@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p normal,long            	# Partition to submit to
+#SBATCH -p short            	# Partition to submit to
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu 45Gb     	# Memory in MB
 #SBATCH -J UMI_extract           	# job name
@@ -7,8 +7,10 @@
 #SBATCH -e logs/UMI_extract.%A_%a.err	# Std err file name
 
 module purge
-module load Python/3.8.6-GCCcore-10.2.0
-echo "Python module loaded."
+module load Miniconda3/202411
+eval "$(/soft/system/software/Miniconda3/202411/bin/conda shell.bash hook)"
+conda activate umi_tools
+echo "umi_tools env loaded."
 #------------------------
 # Prapare folders
 
@@ -62,7 +64,7 @@ umi_tools extract --stdin $INFILE \
 echo "Umi-tools performed."
 
 module purge
-module load FastQC/0.11.7-Java-1.8.0_162
+module load FastQC/0.12.1-Java-11
 
 echo "FastQC module loaded."
 #------------------------

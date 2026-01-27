@@ -35,8 +35,10 @@ echo "Final out files copied to QC_trimmed folder."
 cd $PROJECT/QC/${folder}/QC_trimmed/
 echo "Path moved to QC_trimmed."
 
-module load  Python/3.8.6-GCCcore-10.2.0
-echo "Python module loaded."
+module load Miniconda3/202411
+eval "$(/soft/system/software/Miniconda3/202411/bin/conda shell.bash hook)"
+conda activate multiqc
+echo "multiqc env loaded."
 
 multiqc -f .
 echo "Multiqc run."

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p short,normal         # Partition to submit to
+#SBATCH -p normal         # Partition to submit to
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu 7Gb     # Memory in MB
 #SBATCH -J smallRNASeq           # job name
@@ -11,10 +11,10 @@
 #                                                       -TO BE RUN IN THE COMMAND LINE-                                                               #
 # After fulfilling the file 'config_input_files.txt' and 'sample_sheet.xlsx' (if needed), please run the following command in the bash terminal:      #
 #                                                                                                                                                     #
-# cd /bicoh/MARGenomics/Pipelines/smallRNASeq (or else the directory where "test_pipeline_structure.sh" is located; usually your project directory,   #
+# cd /bicoh/MARGenomics/ProjectFolder/smallRNASeq ( directory where "test_pipeline_structure.sh" is located; usually your project directory,   #
 #     but bear in mind that a logs folder must be there!)                                                                                              #
-# INPUT=/bicoh/MARGenomics/Pipelines/smallRNASeq/config_inputs_file.txt (please modify the directory to where the onfig_inputs_files.txt is located) #
-# sbatch /bicoh/MARGenomics/Pipelines/smallRNASeq/test_pipeline_structure.sh $INPUT                                                                                                            #
+# INPUT=/bicoh/MARGenomics/ProjectFolder/smallRNASeq/config_inputs_file.txt (please modify the directory to where the config_inputs_files.txt is located) #
+# sbatch /bicoh/MARGenomics/ProjectFolder/smallRNASeq/test_pipeline_structure.sh $INPUT                                                                                                            #
 #                                                                                                                                                     #
 #######################################################################################################################################################
 
@@ -23,7 +23,7 @@ PARAMS=$1
 # Steps to perform
 MERGE=$(grep merge: $PARAMS | awk '{ print$2 }' | tr -d '\r')
 QC=$(grep quality: $PARAMS | awk '{ print$2 }' | tr -d '\r')
-LENGTH_EXTRACT=$(grep 01_umi_length_and_extract: $PARAMS | awk '{ print$2 }' | tr -d '\r')
+EXTRACT=$(grep 01_umi_extract: $PARAMS | awk '{ print$2 }' | tr -d '\r')
 CUTADAPT=$(grep 02_cutadapt: $PARAMS | awk '{ print$2 }' | tr -d '\r')
 ALIGNMENT=$(grep 03_alignment: $PARAMS | awk '{ print$2 }' | tr -d '\r')
 QUANTIFICATION=$(grep 04_quantification: $PARAMS | awk '{ print$2 }' | tr -d '\r')
@@ -62,18 +62,18 @@ echo -e "
 # PLEASE READ THE BELOW TEXT BEFORE RUNNING THE PIPELINE #
 ##########################################################
 
-In order to run this smallRNAseq pipeline, please fill in the config_input_files.txt file that can be found in the '/bicoh/MARGenomics/Pipelines/smallRNASeq' path.
-All required functions can be found in that path as well. The primary script is this file 'test_pipeline_structure.sh', from which other scripts are called and sent to the cluster.
+In order to run this smallRNAseq pipeline, please fill in the config_input_files.txt file. The primary script is this file 'test_pipeline_structure.sh', from which other scripts are called and sent to the cluster.
 
-Please do note that the 'config_input_files.txt' file must be fulfilled leaving an **empty space** between the colon (:) and the input text (e.g: project_directory: /bicoh/MARGenomics/Development/RNASeq/TEST).
-Any other version of inputing data (such as project_directory:/bicoh/MARGenomics...) will NOT work for the pipeline. See below the description of each element from the input txt file:
+Please do note that the 'config_input_files.txt' file must be fulfilled leaving an **empty space** between the colon (:) and the input text (e.g: project_directory: /path/to/directory).
+
+See below the description of each element from the input txt file:
 
   ################
   STEPS TO PERFORM
   ################
   >merge: whether you require to merge your data before processing (for >1 lane) (TRUE/FALSE).
   >quality: whether to compute the quality check(TRUE/FALSE).
-  >01_umi_length_and_extract: whether to compute the UMI length and extraction (TRUE/FALSE).
+  >01_umi_extract: whether to perform UMI extraction (TRUE/FALSE).
   >02_cutadapt: whether to compute the cutadapt (TRUE/FALSE).
   >03_alignment: whether to compute the alignment (TRUE/FALSE).
   >04_quantification: whether to compute the quantification (TRUE/FALSE).
@@ -126,13 +126,12 @@ Also please consider the following points when populating the config_input_files
       (e.g: if -batch_num- is set to 3 and -batch_folder- to 'BATCH_0', the batch folders through which the pipeline will iterate will be 'BATCH_01', 'BATCH_02' and 'BATCH_03').
   -If you only require to run some parts of the pipeline, please consider the following:
       >This pipeline assumes that there will be 5 folders within your -project_analysis- directory:
-        00_Length
         01_UMI_extract
         02_Cutadapt
         03_Alignment
         04_Quantification
-      >Please note that if '01_umi_length_and_extract' is set to FALSE, the folders '00_Length' and '01_UMI_extract' will not be generated and are not expected to exist. If this smallRNAseq analysis contains UMIs
-      (UMIs set to TRUE) but '01_umi_length_and_extract' is set to FALSE (smallRNAseq contains UMIs, but UMI length and UMI extact are not to be run), the pipeline will expect the path $WD/02_Cutadapt/Trimmed_Files
+      >Please note that if '01_umi_extract' is set to FALSE, the folder '01_UMI_extract' will not be generated and are not expected to exist. If this smallRNAseq analysis contains UMIs
+      (UMIs set to TRUE) but '01_umi_extract' is set to FALSE (smallRNAseq contains UMIs, but UMI extact are not to be run), the pipeline will expect the path $WD/02_Cutadapt/Trimmed_Files
       to contain .fastq.gz files in it.
       >If '02_cutadapt' is set to FALSE but '03_alignment' to TRUE, the pipeline will assume that the path $WD/02_Cutadapt/Trimmed_Files exists and contains .zip files generated from the alignment.
       If no alignment has been run previously, the alignment will not work as the pipeline will not find the required files.
@@ -176,10 +175,6 @@ fi
 
 if [ "$QC" == TRUE ]; then
   echo "- QC."
-fi
-
-if [ "$LENGTH_EXTRACT" == TRUE ]; then
-  echo "- Compute UMI length and extraction."
 fi
 
 if [ "$CUTADAPT" == TRUE ]; then
@@ -356,37 +351,19 @@ fi
 
 ######################################################
 #############                            #############
-#############  UMI LENGTH AND EXTRACT    #############
+#############  UMI  EXTRACT  		 #############
 #############                            #############
 ######################################################
 
 echo -e "
 ######################################################
 #############                            #############
-#############  UMI LENGTH AND EXTRACT    #############
+#############  UMI EXTRACT               #############
 #############                            #############
 ######################################################
 "
-
-if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
+if [ "$EXTRACT" == "TRUE" ]; then
   for folder in "${folders[@]}"; do
-    #==============================#
-    # 00) UMI LENGTH               #
-    #==============================#
-    echo -e "
-    ====================
-    Computing UMI length
-    ===================="
-    mkdir -p "$FUNCTIONSDIR/00_Length/logs"
-    cd "$FUNCTIONSDIR/00_Length" || exit 1
-    echo "Path moved to $FUNCTIONSDIR/00_Length."
-
-    SEQUENCE_SH=$(sbatch --parsable "$FUNCTIONSDIR/00_Length/sequence.sh" "$WD" "$FASTQDIR" "$folder" "$ADAPTER" "$FASTQ_SUFFIX")
-    echo "sequence.sh script sent to the cluster with job ID $SEQUENCE_SH."
-
-    LENGTH_SH=$(sbatch --dependency=afterok:${SEQUENCE_SH} --parsable "$FUNCTIONSDIR/00_Length/length.sh" "$WD" "$folder")
-    echo "length.sh script sent to the cluster with job ID $LENGTH_SH."
-
     #==============================#
     # 01) UMI EXTRACT              #
     #==============================#
@@ -402,14 +379,14 @@ if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
     length_files=$(ls -lR "$FASTQDIR/${folder}"/*$FASTQ_SUFFIX | wc -l) #get the number of files with fastq.gz extension
     echo "A total of $length_files fastq.gz files have been found and will be analyzed."
 
-    EXTRACT_SH=$(sbatch --dependency=afterok:${LENGTH_SH} --parsable --array=1-$length_files "$FUNCTIONSDIR/01_UMI_extract/umi_extract_1mm.sh" "$FASTQDIR" "$folder" "$WD" "$ADAPTER" "$FASTQ_SUFFIX")
+    EXTRACT_SH=$(sbatch --parsable --array=1-$length_files "$FUNCTIONSDIR/01_UMI_extract/umi_extract_1mm.sh" "$FASTQDIR" "$folder" "$WD" "$ADAPTER" "$FASTQ_SUFFIX")
     echo "umi_extract_1mm.sh script sent to the cluster with job ID $EXTRACT_SH."
 
     GZIP_SH=$(sbatch --dependency=afterok:${EXTRACT_SH} --parsable "$FUNCTIONSDIR/01_UMI_extract/gzip.sh" "$folder" "$WD")
     echo "gzip.sh script sent to the cluster with job ID $GZIP_SH."
   done
   else
-    echo -e "\n UMI length and UMI extract will not be run. \n"
+    echo -e "\n UMI extract will not be run. \n"
   fi
 
 ######################################################
@@ -430,7 +407,7 @@ if [ "$CUTADAPT" == "TRUE" ]; then
     cd "$FUNCTIONSDIR/02_Cutadapt" || exit 1
     echo "Path moved to $FUNCTIONSDIR/02_Cutadapt."
 
-    if [ "$LENGTH_EXTRACT" == "TRUE" ]; then
+    if [ "$EXTRACT" == "TRUE" ]; then
       # Check if the job $GZIP_SH is still running
 
       while [[ $(squeue -j "$GZIP_SH" -h | wc -l)  == 1 ]]; do # while there is still the GZIP_SH job in the squeue, sleep for 60 seconds
@@ -438,7 +415,7 @@ if [ "$CUTADAPT" == "TRUE" ]; then
           sleep 60
       done
 
-      # Run the job with array mode and set the dependency only if LENGTH_EXTRACT is TRUE
+      # Run the job with array mode and set the dependency only if EXTRACT is TRUE
       CUTADAPT_LOOP=$(sbatch --parsable "$FUNCTIONSDIR/02_Cutadapt/cutadapt.loop.sh" "$FASTQDIR" "$folder" "$WD" "$FUNCTIONSDIR" "$UMI" "$ADAPTER" "$FASTQ_SUFFIX")
 
     else
@@ -558,13 +535,11 @@ if [ "$QUANTIFICATION" == "TRUE" ]; then
         ======================"
 
         mkdir -p "$FUNCTIONSDIR/04_Quantification/logs"
-        mkdir -p "$WD/04_Quantification/CountFiles/${folder}"
 
         cd "$FUNCTIONSDIR/04_Quantification" || exit 1
         echo "Path moved to $FUNCTIONSDIR/04_Quantification."
 
         BAMDIR="$WD/03_Alignment/BAM_Files/${folder}"
-        OUTDIR="$WD/04_Quantification/CountFiles/${folder}"
 
         INDIR="$WD/03_Alignment/BAM_Files/${folder}"
 
@@ -582,7 +557,7 @@ if [ "$QUANTIFICATION" == "TRUE" ]; then
         fi
 
         if [ "$UMI" == "TRUE" ]; then
-            QUANT=$(sbatch --dependency=afterok:${STAR_LOOP} --parsable --array=1-$length_files "$FUNCTIONSDIR/04_Quantification/quantification.sh" "$WD" "$folder" "$REFGENE" "$ANNOTGENE" "$PROJECT" "$UMI")
+            QUANT=$(sbatch --parsable --array=1-$length_files "$FUNCTIONSDIR/04_Quantification/quantification.sh" "$WD" "$folder" "$REFGENE" "$ANNOTGENE" "$PROJECT" "$UMI")
             echo "Quantification script sent to the cluster."
 
             while [ $(ls -lR "$WD/04_Quantification/UMI_Counts/${folder}"/*.tsv | wc -l) -ne $length_files ]; do
@@ -594,7 +569,7 @@ if [ "$QUANTIFICATION" == "TRUE" ]; then
             echo "Stats script sent to the cluster with job ID $STATS_UNIQUE. Job will start once quantification jobs have finished."
 
         else
-            QUANT=$(sbatch --dependency=afterok:${STAR_LOOP} --parsable "$FUNCTIONSDIR/04_Quantification/quantification.sh" "$WD" "$folder" "$REFGENE" "$ANNOTGENE" "$PROJECT" "$UMI")
+            QUANT=$(sbatch --parsable "$FUNCTIONSDIR/04_Quantification/quantification.sh" "$WD" "$folder" "$REFGENE" "$ANNOTGENE" "$PROJECT" "$UMI")
             echo "quantification.sh job sent to the cluster with job ID $QUANT."
         fi
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -p long            	# Partition to submit to
+#SBATCH -p short            	# Partition to submit to
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu 45Gb     	# Memory in MB
 #SBATCH -J gzip           	# job name
